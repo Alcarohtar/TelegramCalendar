@@ -6,10 +6,8 @@ It allows to store/remove event on calendar database and show them with te right
 
 
 ## What do you need?
-1.  - Install with pip3 the appropriate libraries:
-	- python-telegram-bot
-	- reponses
-	- mariadb-server
+1.  - Install with pip3 the appropriate libraries: python-telegram-bot, reponses
+    - Install with apt mariadb-server
 2.  - Check mariadb-server is in status "running" : sudo systemctl status mariadb.service
 3.  - Log in mariadb database: sudo mariadb -u root -p
 4.  - Create a new user with the command: CREATE USER 'user'@localhost IDENTIFIED BY 'password';
