@@ -6,19 +6,19 @@ It allows to store/remove event on calendar database and show them with te right
 
 
 ## What do you need?
-1  - Install with pip3 the appropriate libraries:
+1.  - Install with pip3 the appropriate libraries:
 	- python-telegram-bot
 	- reponses
 	- mariadb-server
-2  - Check mariadb-server is in status "running" : sudo systemctl status mariadb.service
-3  - Log in mariadb database: sudo mariadb -u root -p
-4  - Create a new user with the command: CREATE USER 'user'@localhost IDENTIFIED BY 'password';
-5  - Select your new user with the command: SELECT user FROM mysql.user;
-6  - Give privileges to your new user with the command: GRANT ALL PRVILEGES ON *.* TO 'user'@localhost IDENTIFIED BY 'password';
-7  - Exit from mariadb with command quit and enter again with new user: sudo mariadb -u user -p (where user is the one chosen before)
-8  - Create new Database with command: CREATE DATABASE databasename;
-9  - Use that new database: USE databasename;
-10 - Create new table with the command:
+2.  - Check mariadb-server is in status "running" : sudo systemctl status mariadb.service
+3.  - Log in mariadb database: sudo mariadb -u root -p
+4.  - Create a new user with the command: CREATE USER 'user'@localhost IDENTIFIED BY 'password';
+5.  - Select your new user with the command: SELECT user FROM mysql.user;
+6.  - Give privileges to your new user with the command: GRANT ALL PRVILEGES ON *.* TO 'user'@localhost IDENTIFIED BY 'password';
+7.  - Exit from mariadb with command quit and enter again with new user: sudo mariadb -u user -p (where user is the one chosen before)
+8.  - Create new Database with command: CREATE DATABASE databasename;
+9.  - Use that new database: USE databasename;
+10. - Create new table with the command:
 	CREATE TABLE calendario_famiglia (
     		id int NOT NULL AUTO_INCREMENT,
     		data date NOT NULL,
@@ -26,12 +26,12 @@ It allows to store/remove event on calendar database and show them with te right
     		ora_inizio time,
     		ora_fine time
 		);
-11 - ***I created a table named "calendario_famiglia". If you want to use another name for you table ***
+11. - ***I created a table named "calendario_famiglia". If you want to use another name for you table ***
      ***you need to modify file Calendario-Main.py and substitute all calendario_famiglia occurences with your table name***
      ***same for all field of table (id, data, descrizione, ora_inizio, ora_fine). If you need to change those name you have to***
      ***modify the Calendario-Main.py file. Those name have no impact on what you are going to read on telegram, they have impact only on code***
-12 - Modify all fields in Calendario_privateInfo.py with your personal information 
-13 - Go on Telegram app, check BotFather and create a new bot with command /newbot
+12. - Modify all fields in Calendario_privateInfo.py with your personal information 
+13. - Go on Telegram app, check BotFather and create a new bot with command /newbot
      ***The reply message will contain a TOKEN you have to use in your script Calendatio_privateInfo.py***
 
 
