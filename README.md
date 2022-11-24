@@ -25,9 +25,9 @@ It allows to store/remove event on calendar database and show them with te right
     		ora_fine time  
 		);  
 11. - ***I created a table named "calendario_famiglia". If you want to use another name for you table 
-     you need to modify file Calendario-Main.py and substitute all calendario_famiglia occurences with your table name
-     same for all field of table (id, data, descrizione, ora_inizio, ora_fine). If you need to change those name you have to
-     modify the Calendario-Main.py file. Those name have no impact on what you are going to read on telegram, they have impact only on code***
+     you need to modify file Calendario_Main.py and substitute all calendario_famiglia occurences with your table name.  
+     Same for all field of table (id, data, descrizione, ora_inizio, ora_fine). If you need to change those name you have to
+     modify the Calendario_Main.py file. Those name have no impact on what you are going to read on telegram, they have impact only on code***
 12. - Modify all fields in Calendario_privateInfo.py with your personal information 
 13. - Go on Telegram app, check BotFather and create a new bot with command /newbot
      ***The reply message will contain a TOKEN you have to use in your script Calendatio_privateInfo.py***
@@ -64,6 +64,6 @@ On telegram bot you can use these commands:
 
 
 
-***Please let me know if something is not clear, if some bugs happen or if you think it could be improved***
+***Please let me know if something is not clear, if some bugs happen or if you think it could be improved***  
 ***It has been tested on linux os and MacOs. New tests on will be done soon.***
 
