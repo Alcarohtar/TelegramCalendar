@@ -16,14 +16,14 @@ It allows to store/remove event on calendar database and show them with te right
 7.  - Exit from mariadb with command quit and enter again with new user: sudo mariadb -u user -p (where user is the one chosen before)
 8.  - Create new Database with command: CREATE DATABASE databasename;
 9.  - Use that new database: USE databasename;
-10. - Create new table with the command:
-	CREATE TABLE calendario_famiglia (
-    		id int NOT NULL AUTO_INCREMENT,
-    		data date NOT NULL,
-    		descrizione varchar(1000) NOT NULL,
-    		ora_inizio time,
-    		ora_fine time
-		);
+10. - Create new table with the command:  
+	CREATE TABLE calendario_famiglia (  
+    		id int NOT NULL AUTO_INCREMENT,  
+    		data date NOT NULL,  
+    		descrizione varchar(1000) NOT NULL,  
+    		ora_inizio time,  
+    		ora_fine time  
+		);  
 11. - ***I created a table named "calendario_famiglia". If you want to use another name for you table ***
      ***you need to modify file Calendario-Main.py and substitute all calendario_famiglia occurences with your table name***
      ***same for all field of table (id, data, descrizione, ora_inizio, ora_fine). If you need to change those name you have to***
@@ -34,15 +34,15 @@ It allows to store/remove event on calendar database and show them with te right
 
 
 ## How to modify Calendario_privateInfo.py
-user 	 = "" (Insert the name of new user created on point 4)
-password = "" (Insert the password for your user created on point 4) 
-host	 = "" (Insert "localhost")
-port	 = "" (Insert "3306")
-database = "" (Insert the name of database created on point 8)
-user	 = "" (Insert name and surname of user enable to access to that database)
-	      (For example if you want to use that bot and share it to your wife, you have to add
-		user1=[(youName,yourSurname)] and user2=[(yourWifeName, yourWifeSurname)])
-		Modify users variable in CalendarioTelegram_main.py if you want to add other users
+user 	 = "" (Insert the name of new user created on point 4)  
+password = "" (Insert the password for your user created on point 4)   
+host	 = "" (Insert "localhost")  
+port	 = "" (Insert "3306")  
+database = "" (Insert the name of database created on point 8)  
+user	 = "" (Insert name and surname of user enable to access to that database)  
+	      (For example if you want to use that bot and share it to your wife, you have to add  
+		user1=[(youName,yourSurname)] and user2=[(yourWifeName, yourWifeSurname)])  
+		Modify users variable in CalendarioTelegram_main.py if you want to add other users  
 
  ***All files have to be in same directory***
 
