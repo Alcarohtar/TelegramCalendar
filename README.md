@@ -43,9 +43,9 @@ user	 = "" (Insert name and surname of user enable to access to that database)
 	      (For example if you want to use that bot and share it to your wife, you have to add  
 		user1=[(youName,yourSurname)] and user2=[(yourWifeName, yourWifeSurname)])  
 		Modify users variable in CalendarioTelegram_main.py if you want to add other users  
+chat_id	 = "" (Insert the chat_id of your bot. You can find it on telegram app using @userinfobot)
 
  ***All files have to be in same directory***
-
   
 ## File Explanation
 - Calendario-Main.py contains all function to manage the database.
@@ -61,9 +61,9 @@ On telegram bot you can use these commands:
   Time start and time end are optional
 - R: means "remove". To remove an instance from calendar you can write R id (EX: R 5). You can also write more than one event to remove (EX: R 2 5 19)
   It is possible to remove all calendar with R all command
+- On last commit there is a new functionality. Every morning at 7:45 a notification is sent if an Expired or Expired_Today event is found
 
 
 
 ***Please let me know if something is not clear, if some bugs happen or if you think it could be improved***  
 ***It has been tested on linux os and MacOs. New tests on will be done soon.***
-
