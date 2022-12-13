@@ -1,10 +1,12 @@
 import logging
 import Calendario_Main
 import datetime
+import telegram
 from telegram import Update, ForceReply
 from telegram.ext import Updater, CommandHandler, MessageHandler,Filters,CallbackContext
 import responses as R
 import Calendario_privateInfo
+import pytz
 
 #users enable to access to database
 #Modify Calendario_privateInfo.py file to add your user
@@ -15,6 +17,24 @@ matched="KO"
 #enable logging
 #logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s %(message)s', level=logging.INFO)
 #logger = logging.getLogger(__name__)
+
+def callback_everyday(context:telegram.ext.CallbackContext):
+    cur,conn = Calendario_Main.connect_to_database()
+    current_table = Calendario_Main.show_table(cur, conn)
+    today = datetime.date.today()
+    for row in current_table:
+        if today > row[1]:
+            row_to_send = "*** EXPIRED ***"
+            for i in row:
+                row_to_send = row_to_send+" - "+ str(i)
+            context.bot.send_message(chat_id=Calendario_privateInfo.chat_id, text=row_to_send)
+        elif today == row[1]:
+            row_to_send = "*** EXPIRES TODAY ***"
+            for i in row:
+                row_to_send = row_to_send+" - "+ str(i)
+            context.bot.send_message(chat_id=Calendario_privateInfo.chat_id, text=row_to_send)
+        else:
+            pass
 
 #function that show all rows saved in tables. Needs command "show" on telegram
 def show_table(update, cur, conn):
@@ -124,6 +144,8 @@ def main_runnable() -> None:
     """Start the BOT"""
     try:
         updater = Updater(Calendario_privateInfo.TOKEN)
+        job = updater.job_queue
+        job.run_repeating(callback_everyday, interval=datetime.timedelta(1), first=datetime.time(hour=6,minute=45))
         dp = updater.dispatcher
         dp.add_handler(MessageHandler(Filters.text,handle_message))
         updater.start_polling(5)
