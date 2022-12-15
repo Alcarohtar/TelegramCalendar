@@ -24,14 +24,34 @@ def callback_everyday(context:telegram.ext.CallbackContext):
     today = datetime.date.today()
     for row in current_table:
         if today > row[1]:
-            row_to_send = "*** EXPIRED ***"
-            for i in row:
-                row_to_send = row_to_send+" - "+ str(i)
+            row_to_send = "*** EXPIRED *** - "
+            my_date = datetime.datetime.strptime(str(row[1]), '%Y-%m-%d')
+            my_date_IT = my_date.strftime('%d/%m/%Y')
+            row_to_send = row_to_send + str(my_date_IT) + " - "  + str(row[2])
+            try:
+                row_to_send = row_to_send + " - " + str(row[3])
+            except:
+                pass    
+            try:
+                row_to_send = row_to_send + " - " + str(row[4])
+            except:
+                pass
+            row_to_send = row_to_send + "- (" + str(row[0])+ ")"
             context.bot.send_message(chat_id=Calendario_privateInfo.chat_id, text=row_to_send)
         elif today == row[1]:
-            row_to_send = "*** EXPIRES TODAY ***"
-            for i in row:
-                row_to_send = row_to_send+" - "+ str(i)
+            row_to_send = "*** EXPIRES TODAY *** - "
+            my_date = datetime.datetime.strptime(str(row[1]), '%Y-%m-%d')
+            my_date_IT = my_date.strftime('%d/%m/%Y')
+            row_to_send = row_to_send + str(my_date_IT) + " - "  + str(row[2])
+            try:
+                row_to_send = row_to_send + " - " + str(row[3])
+            except:
+                pass    
+            try:
+                row_to_send = row_to_send + " - " + str(row[4])
+            except:
+                pass
+            row_to_send = row_to_send + "- (" + str(row[0])+ ")"
             context.bot.send_message(chat_id=Calendario_privateInfo.chat_id, text=row_to_send)
         else:
             pass
@@ -42,13 +62,29 @@ def show_table(update, cur, conn):
     today = datetime.date.today()
     for row in current_table:
         if today > row[1]:
-            row_to_send = "<u><b> EXPIRED </b></u>"
+            row_to_send = "<u><b> EXPIRED - </b></u>"
         elif today == row[1]:
-            row_to_send = "<u><b> EXPIRES TODAY </b></u>"
+            row_to_send = "<u><b> EXPIRES TODAY - </b></u>"
         else:
             row_to_send = ""
-        for i in row:
-            row_to_send = row_to_send+" - "+ str(i)
+        my_date = datetime.datetime.strptime(str(row[1]), '%Y-%m-%d')
+        my_date_IT = my_date.strftime('%d/%m/%Y')
+        row_to_send = row_to_send + str(my_date_IT) + " - "  + str(row[2])
+        try:
+            row_to_send = row_to_send + " - " + str(row[3])
+        except:
+            pass    
+        try:
+            row_to_send = row_to_send + " - " + str(row[4])
+        except:
+            pass
+
+        row_to_send = row_to_send + "- (" + str(row[0])+ ")"
+
+        #for i in row:
+        #    if(row[1]):
+        #        update.message.reply_text("OK")
+        #    row_to_send = row_to_send+" - ("+ str(i)+ ")"
         update.message.reply_text(row_to_send,parse_mode='HTML')
 
 
