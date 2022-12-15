@@ -8,6 +8,7 @@ import responses as R
 import Calendario_privateInfo
 import pytz
 
+
 #users enable to access to database
 #Modify Calendario_privateInfo.py file to add your user
 users=[Calendario_privateInfo.user1, Calendario_privateInfo.user2]
