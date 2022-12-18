@@ -67,3 +67,4 @@ On telegram bot you can use these commands:
 
 ***Please let me know if something is not clear, if some bugs happen or if you think it could be improved***  
 ***It has been tested on linux os and MacOs. New tests on will be done soon.***
+
